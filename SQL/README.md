@@ -1,5 +1,6 @@
 # SQL Scripts
 This folder contains the SQL scripts required for database and table creation, as well as sample data insertion.
+
 FindMyMeal Database
 This project contains the SQL script for the FindMyMeal database. The database supports user accounts, recipes, and saved recipe functionality.
 
