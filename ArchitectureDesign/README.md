@@ -20,6 +20,7 @@ The following architectural options were evaluated for the project:
 
 ## How to Use
 - Review the diagrams to understand each architecture's structure.
+- Refer to the `RequirementMatrix.png` file for the chosen critera for final architecture. 
 - Refer to the `findmymeal.com_architecture.png` file for the final design selected for implementation.
 
 ## Key Decisions
