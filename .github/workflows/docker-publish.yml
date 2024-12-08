@@ -8,8 +8,7 @@ on:
 
 env:
   # Change this to your Docker Hub username
-  DOCKER_HUB_USERNAME: your-dockerhub-username
-
+  DOCKER_HUB_USERNAME: bazenmek
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
