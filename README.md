@@ -10,8 +10,7 @@ _A Recipe Search and Management System_
 3. [Features](#features)  
 4. [How to Use](#how-to-use)  
 5. [System Design Phases](#system-design-phases)  
-6. [Demo Video](#demo-video)  
-7. [Support and Contact Information](#support-and-contact-information)  
+6. [Support and Contact Information](#support-and-contact-information)  
 
 ---
 
