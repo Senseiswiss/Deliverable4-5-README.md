@@ -29,11 +29,17 @@ The FindMyMeal web application helps users search recipes by ingredients or nutr
 
 ## **Installation Steps**  
 
-1. **Access Docker Tags**  
+1.**Clone the GitHub Repository**  
+   Clone the repository using the following command:  
+
+   ```bash
+   git clone https://github.com/Senseiswiss/Deliverable4-5-README.md.git
+   ```
+2. **Access Docker Tags**  
    Retrieve Docker tags from the following URL:  
    [Docker Hub - Recipe App](https://hub.docker.com/r/bazenmek/recipe-app/tags)  
 
-2. **Pull Docker Images**  
+3. **Pull Docker Images**  
    Use these commands to pull the Docker images:  
 
    ```bash
@@ -41,22 +47,8 @@ The FindMyMeal web application helps users search recipes by ingredients or nutr
    docker pull bazenmek/recipe-app:backend-latest
    ```
 
-3. **Clone the GitHub Repository**  
-   Clone the repository using the following command:  
-
-   ```bash
-   git clone https://github.com/Senseiswiss/Deliverable4-5-README.md.git
-   ```
-
-4. **Database Setup**  
-   Import the `findmymeal.sql` database file into PostgresSQL.  
-
-5. **Start the Web Server**  
-   Launch the web server.  
-
-6. **Access the Application**  
-   Open the app in your browser at:  
-   `http://localhost/findmymeal`  
+6. **Create Docker Image**  
+  
 
 ---
 
