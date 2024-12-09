@@ -94,12 +94,6 @@ The FindMyMeal web application helps users search recipes by ingredients or nutr
 
 ---
 
-### **Demo Video**  
-
-[![Watch the Demo](https://img.youtube.com/vi/demo_video_id/0.jpg)](https://www.youtube.com/watch?v=demo_video_id)
-
----
-
 ### **Support and Contact Information**  
 
 For inquiries or support, contact us at:  
