@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   postgres:
     image: postgres:latest
@@ -10,9 +9,9 @@ services:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "8432:5432"
   backend:
-    image: bazenmek/recipe-app:backend-latest  # Changed from build: ./backend
+    image: bazenmek/recipe-app:backend-latest
     depends_on:
       - postgres
     environment:
@@ -24,13 +23,13 @@ services:
       JWT_SECRET: your_secret_key
       SPOONACULAR_API_KEY: f973aa70f8104d0babff704c934084db
     ports:
-      - "5000:5000"
+      - "8001:5000"
   frontend:
-    image: bazenmek/recipe-app:frontend-latest  # Changed from build: ./frontend
+    image: bazenmek/recipe-app:frontend-latest
     environment:
-      REACT_APP_API_URL: http://localhost:5000/api
+      REACT_APP_API_URL: http://localhost:8001/api
     ports:
-      - "3000:3000"
+      - "8000:3000"
     depends_on:
       - backend
 volumes:
