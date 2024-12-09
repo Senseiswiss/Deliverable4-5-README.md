@@ -49,7 +49,7 @@ The FindMyMeal web application helps users search recipes by ingredients or nutr
    ```
 
 4. **Database Setup**  
-   Import the `findmymeal.sql` database file into MySQL.  
+   Import the `findmymeal.sql` database file into PostgresSQL.  
 
 5. **Start the Web Server**  
    Launch the web server.  
