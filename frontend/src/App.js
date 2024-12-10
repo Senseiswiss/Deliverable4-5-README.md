@@ -443,6 +443,7 @@ function App() {
   return (
     <AuthProvider>
       <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Demo-1</h1>
         <Tabs defaultValue="account">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="account">Account</TabsTrigger>
