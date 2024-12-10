@@ -7,10 +7,8 @@ const pool = require('./config/database');
 
 const app = express();
 
-
 app.use(cors());
 app.use(express.json());
-
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -27,11 +25,25 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-
-pool.connect()
-  .then(() => console.log('✅ Connected to PostgreSQL Database'))
-  .catch(err => console.error('❌ PostgreSQL connection error:', err));
-
+const startServer = async () => {
+  let connected = false;
+  while (!connected) {
+    try {
+      connected = await pool.testConnection();
+      if (connected) {
+        console.log('✅ Connected to PostgreSQL Database');
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+          console.log(`✅ Server running on port ${PORT}`);
+        });
+      }
+    } catch (err) {
+      console.error('❌ PostgreSQL connection error:', err);
+      console.log('Retrying in 5 seconds...');
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+  }
+};
 
 app.post('/api/register', async (req, res) => {
   try {
@@ -104,7 +116,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-
 app.get('/api/recipes/ingredients', authenticateToken, async (req, res) => {
   try {
     console.log('Searching recipes by ingredients:', req.query.ingredients);
@@ -150,14 +161,12 @@ app.post('/api/recipes/save', authenticateToken, async (req, res) => {
     const { recipe } = req.body;
     const userId = req.user.userId;
 
-
     const existing = await pool.query(
       'SELECT * FROM user_recipes WHERE user_id = $1 AND recipe_id = $2',
       [userId, recipe.id]
     );
 
     if (existing.rows.length === 0) {
-
       await pool.query(
         `INSERT INTO recipes (recipe_id, recipe_name, image, ingredients, nutrition_info, calories) 
          VALUES ($1, $2, $3, $4, $5, $6)
@@ -178,7 +187,6 @@ app.post('/api/recipes/save', authenticateToken, async (req, res) => {
         ]
       );
 
- 
       await pool.query(
         'INSERT INTO user_recipes (user_id, recipe_id) VALUES ($1, $2)',
         [userId, recipe.id]
@@ -226,7 +234,6 @@ app.get('/api/recipes/saved', authenticateToken, async (req, res) => {
   }
 });
 
-
 app.get('/api/recipes/:id', authenticateToken, async (req, res) => {
   try {
     console.log('Fetching recipe details for ID:', req.params.id);
@@ -245,7 +252,4 @@ app.get('/api/recipes/:id', authenticateToken, async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
+startServer();
